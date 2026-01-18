@@ -1,0 +1,116 @@
+<!-- Include external CSS libraries for animations and interactivity -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Welcome Section HTML -->
+<div id="aquador-welcome-section" class="welcome-container animate__animated animate__fadeIn">
+  <div class="welcome-content">
+    <h1 class="animate__animated animate__fadeInDown">Welcome Back, <span id="user-name"></span></h1>
+    <p class="animate__animated animate__fadeInUp">Step into the world of Aquador, where luxury meets elegance. Explore our latest fragrances and enjoy exclusive offers tailored just for you.</p>
+    <a href="/shop" class="welcome-button animate__animated animate__pulse animate__infinite">Discover New Scents</a>
+  </div>
+  <img src="https://i.ibb.co/PT8NMHW/1000008414.jpg" alt="Aquador Perfume" class="welcome-image animate__animated animate__zoomIn">
+</div>
+
+<!-- Custom CSS -->
+<style>
+/* Welcome Section Container */
+.welcome-container {
+  position: relative;
+  background-color: #ffffff; /* White background for contrast */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  font-family: 'Georgia', serif;
+  color: #000000; /* Black text color */
+}
+
+/* Welcome Content */
+.welcome-content {
+  max-width: 700px;
+  text-align: left;
+}
+
+.welcome-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #000000; /* Black text color */
+}
+
+.welcome-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #666666; /* Dark grey text color */
+}
+
+.welcome-button {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #b89b72; /* Gold color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.welcome-button:hover {
+  background-color: #a4825c; /* Darker gold color */
+}
+
+/* Welcome Image */
+.welcome-image {
+  width: 200px; /* Small image */
+  height: auto;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1600px) {
+  .welcome-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .welcome-image {
+    width: 150px; /* Adjusted width for smaller screens */
+    margin-top: 20px;
+  }
+}
+</style>
+
+<!-- Custom JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof Squarespace !== 'undefined' && Squarespace.UserAccounts) {
+    Squarespace.UserAccounts.getCurrentUser().then(function(user) {
+      if (user) {
+        // Populate user name
+        document.getElementById('user-name').textContent = user.firstName;
+      }
+    });
+  }
+
+  // Animate.css example for additional animation on load
+  $('.welcome-container').addClass('animate__animated animate__fadeIn');
+
+  // Button interaction
+  $('.welcome-button').hover(
+    function() {
+      $(this).addClass('animate__animated animate__jello');
+    }, function() {
+      $(this).removeClass('animate__animated animate__jello');
+    }
+  );
+});
+</script>
